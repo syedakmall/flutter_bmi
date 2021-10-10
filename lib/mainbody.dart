@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'dart:math';
@@ -9,13 +10,13 @@ class MainBody extends StatefulWidget {
   _MainBodyState createState() => _MainBodyState();
 }
 
-double heights = 0;
-int weight = 0;
+double heights = 1;
+int weight = 1;
 int heightint = heights.toInt();
 var heightmeter = heights / 100;
 double bmikira = weight / (heightmeter * heightmeter);
 double resultbmis = 0;
-int age = 0;
+int age = 1;
 var colortappedgendermale = Colors.white;
 var colortappedgenderfemale = Colors.white;
 
@@ -47,7 +48,8 @@ class _MainBodyState extends State<MainBody> {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.blue,
+                decoration : BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.all(Radius.circular(10))),
+
                 height: 100,
                 child: ElevatedButton(
                   onPressed: () {
@@ -76,10 +78,10 @@ class _MainBodyState extends State<MainBody> {
             Expanded(
               flex: 1,
               child: Container(
-                color: Colors.pink,
+                decoration : BoxDecoration(color: Colors.pink, borderRadius: BorderRadius.all(Radius.circular(10))),
                 height: 100,
                 child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(primary: Colors.pink),
+                  style: ElevatedButton.styleFrom(primary: Colors.pink,),
                   onPressed: () {
                         
                     setState(() {
@@ -113,8 +115,10 @@ class _MainBodyState extends State<MainBody> {
             Expanded(
               flex: 1,
               child: Container(
+                margin: const EdgeInsets.only(left: 10, right: 10),
                 height: 140,
-                color: Colors.purple,
+                  decoration : BoxDecoration(color: Colors.purple, borderRadius: BorderRadius.all(Radius.circular(10))),
+
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
@@ -136,7 +140,7 @@ class _MainBodyState extends State<MainBody> {
                           activeColor: Colors.yellow,
                           inactiveColor: Colors.orange,
                           value: heights,
-                          min: 0,
+                          min: 1,
                           max: 260,
                           label: heights.toString(),
                           onChanged: (heightss) => setState(
@@ -156,7 +160,7 @@ class _MainBodyState extends State<MainBody> {
             Expanded(
               flex: 1,
               child: Container(
-                  color: Colors.green,
+                  decoration : BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10))),
                   height: 120,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -203,7 +207,7 @@ class _MainBodyState extends State<MainBody> {
             Expanded(
               flex: 1,
               child: Container(
-                  color: Colors.green,
+                  decoration : BoxDecoration(color: Colors.green, borderRadius: BorderRadius.all(Radius.circular(10))),
                   height: 120,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
@@ -253,14 +257,21 @@ class _MainBodyState extends State<MainBody> {
         ElevatedButton(
             onPressed: () {
               setState(() {
+                if (heights > 1) {
                 resultbmis = resultbmi(weight, heights);
+                }
               });
             },
             child: Text("Calculate")),
         SizedBox(height: 50),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [Text("BMI : \n ${resultbmis.toPrecision(2)} ")],
+          children: [
+            Text("BMI :", style: GoogleFonts.poppins(fontSize : 20)),
+            SizedBox(width: 10,),
+            Text(resultbmis.toPrecision(2).toString(), style: GoogleFonts.poppins(fontSize : 20))
+          
+          ],
         )
       ],
     );
