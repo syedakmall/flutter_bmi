@@ -19,8 +19,9 @@ class _bmiAppState extends State<bmiApp> {
     return  MaterialApp(
       home : Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.yellow,
           centerTitle: true,
-          title: Text("BMI Application",style : GoogleFonts.poppins()),
+          title: Text("BMI Application",style : GoogleFonts.poppins(color : Colors.black)),
         ),
         body:  MainBody(),
       )
